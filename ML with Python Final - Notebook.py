@@ -1,21 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <a href="https://www.bigdatauniversity.com"><img src="https://ibm.box.com/shared/static/cw2c7r3o20w9zn8gkecaeyjhgw3xdgbj.png" width="400" align="center"></a>
-# 
-# <h1 align="center"><font size="5">Classification with Python</font></h1>
-
-# In this notebook we try to practice all the classification algorithms that we learned in this course.
-# 
-# We load a dataset using Pandas library, and apply the following algorithms, and find the best one for this specific dataset by accuracy evaluation methods.
-# 
-# Lets first load required libraries:
-
-# In[1]:
+# In this notebook we load a dataset using Pandas library, and apply the following algorithms, and find the best one for this specific dataset by accuracy evaluation methods.
 
 
 # Assignment Prepared by IBM Machine Learning with Python
 # Assignment completed by Ram Krishna
+
+# In[1]:
 
 import itertools
 import numpy as np
@@ -43,7 +35,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # | Education      | Education of applicant                                                                |
 # | Gender         | The gender of applicant                                                               |
 
-# Lets download the dataset
 
 # In[2]:
 
@@ -78,9 +69,6 @@ df.head()
 
 # # Data visualization and pre-processing
 # 
-# 
-
-# Let’s see how many of each class is in our data set 
 
 # In[6]:
 
@@ -88,15 +76,8 @@ df.head()
 df['loan_status'].value_counts()
 
 
-# 260 people have paid off the loan on time while 86 have gone into collection 
-# 
-
-# Lets plot some columns to underestand data better:
-
 # In[7]:
 
-
-# notice: installing seaborn might takes a few minutes
 #!conda install -c anaconda seaborn -y
 
 
@@ -158,7 +139,7 @@ df.head()
 df.groupby(['Gender'])['loan_status'].value_counts(normalize=True)
 
 
-# 86 % of female pay there loans while only 73 % of males pay there loan
+# 86 % of female pay their loans while only 73 % of males pay there loan
 # 
 
 # Lets convert male to 0 and female to 1:
@@ -210,7 +191,7 @@ X = Feature
 X[0:5]
 
 
-# What are our lables?
+# What are our labels?
 
 # In[18]:
 
@@ -232,23 +213,16 @@ X[0:5]
 
 # # Classification 
 
-# Now, it is your turn, use the training set to build an accurate model. Then use the test set to report the accuracy of the model
-# You should use the following algorithm:
+# Use the training set to build an accurate model. Then use the test set to report the accuracy of the model
+# Use the following algorithms:
 # - K Nearest Neighbor(KNN)
 # - Decision Tree
 # - Support Vector Machine
 # - Logistic Regression
 # 
-# 
-# 
-# __ Notice:__ 
-# - You can go above and change the pre-processing, feature selection, feature-extraction, and so on, to make a better model.
-# - You should use either scikit-learn, Scipy or Numpy libraries for developing the classification algorithms.
-# - You should include the code of the algorithm in the following cells.
+
 
 # # K Nearest Neighbor(KNN)
-# Notice: You should find the best k to build the model with the best accuracy.  
-# **warning:** You should not use the __loan_test.csv__ for finding the best k, however, you can split your train_loan.csv into train and test to find the best __k__.
 
 # In[20]:
 
@@ -313,12 +287,6 @@ print("Jaccard Score:", jaccard_score(y_test, predict_tree, pos_label = "PAIDOFF
 print("F1 Score:", f1_score(y_test, predict_tree, average = "weighted"))
 
 
-# In[ ]:
-
-
-
-
-
 # # Support Vector Machine
 
 # In[25]:
@@ -377,7 +345,7 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import log_loss
 
 
-# First, download and load the test set:
+# Download and load the test set:
 
 # In[32]:
 
@@ -463,23 +431,7 @@ pd.DataFrame(data=
             columns = ["Algorithm", "Jaccard", "F1-score", "LogLoss"], index = None)
 
 
-# # Report
-# You should be able to report the accuracy of the built model using different evaluation metrics:
 
-# | Algorithm          | Jaccard | F1-score | LogLoss |
-# |--------------------|---------|----------|---------|
-# | KNN                | ?       | ?        | NA      |
-# | Decision Tree      | ?       | ?        | NA      |
-# | SVM                | ?       | ?        | NA      |
-# | LogisticRegression | ?       | ?        | ?       |
-
-# <h2>Want to learn more?</h2>
-# 
-# IBM SPSS Modeler is a comprehensive analytics platform that has many machine learning algorithms. It has been designed to bring predictive intelligence to decisions made by individuals, by groups, by systems – by your enterprise as a whole. A free trial is available through this course, available here: <a href="http://cocl.us/ML0101EN-SPSSModeler">SPSS Modeler</a>
-# 
-# Also, you can use Watson Studio to run these notebooks faster with bigger datasets. Watson Studio is IBM's leading cloud solution for data scientists, built by data scientists. With Jupyter notebooks, RStudio, Apache Spark and popular libraries pre-packaged in the cloud, Watson Studio enables data scientists to collaborate on their projects without having to install anything. Join the fast-growing community of Watson Studio users today with a free account at <a href="https://cocl.us/ML0101EN_DSX">Watson Studio</a>
-# 
-# <h3>Thanks for completing this lesson!</h3>
 # 
 # <h4>Author:  <a href="https://ca.linkedin.com/in/saeedaghabozorgi">Saeed Aghabozorgi</a></h4>
 # <p><a href="https://ca.linkedin.com/in/saeedaghabozorgi">Saeed Aghabozorgi</a>, PhD is a Data Scientist in IBM with a track record of developing enterprise level applications that substantially increases clients’ ability to turn data into actionable knowledge. He is a researcher in data mining field and expert in developing advanced analytic methods like machine learning and statistical modelling on large datasets.</p>
